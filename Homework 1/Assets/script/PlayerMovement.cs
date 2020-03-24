@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 100;
+    private float speed = 30;
 
     [SerializeField]
     private BoxCollider boxColider;
@@ -20,40 +20,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 moveDirection = transform.position;
-        if (Input.GetKey("w"))
+        if (Input.GetKey(KeyCode.W))
         {
-            moveDirection.x += speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.rotation.x, 0, transform.rotation.z);
- 
-
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey(KeyCode.S))
         {
-            moveDirection.x -= speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
+            transform.position -= transform.forward * speed * Time.deltaTime;
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey(KeyCode.A))
         {
-            moveDirection.z += speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.rotation.x, 270, transform.rotation.z);
+            transform.Rotate(0, -2, 0);
         }
-        if (Input.GetKey("d"))
+        if (Input.GetKey(KeyCode.D))
         {
-            moveDirection.z -= speed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.rotation.x, 90, transform.rotation.z);
+            transform.Rotate(0, 2, 0);
         }
-
-
-        transform.position = moveDirection;// * speed * Time.deltaTime;
-
     }
-    //void Update()
-    //{
-
-    //    Vector3 moveDirection = new Vector3(1, 0, 0);
-
-    //    transform.position += moveDirection * speed * Time.deltaTime;
-
-    //}
 }
