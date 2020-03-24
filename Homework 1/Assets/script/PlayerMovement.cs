@@ -24,18 +24,24 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey("w"))
         {
             moveDirection.x += speed * Time.deltaTime;
+            transform.eulerAngles = new Vector3(transform.rotation.x, 0, transform.rotation.z);
+ 
+
         }
         if (Input.GetKey("s"))
         {
             moveDirection.x -= speed * Time.deltaTime;
+            transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
         }
         if (Input.GetKey("a"))
         {
             moveDirection.z += speed * Time.deltaTime;
+            transform.eulerAngles = new Vector3(transform.rotation.x, 270, transform.rotation.z);
         }
         if (Input.GetKey("d"))
         {
             moveDirection.z -= speed * Time.deltaTime;
+            transform.eulerAngles = new Vector3(transform.rotation.x, 90, transform.rotation.z);
         }
 
 
